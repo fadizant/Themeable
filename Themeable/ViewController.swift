@@ -20,17 +20,17 @@ class ViewController: UIViewController {
         switchThemeButton1.setTitleColor(UIColor.init(named: "Buttons"), for: .normal)
         switchThemeButton2.setTitleColor(UIColor.init(named: "Buttons"), for: .normal)
         switchThemeButton3.setTitleColor(UIColor.init(named: "Buttons"), for: .normal)
+        
+        switchThemeButton1.isSelected = UIColor.currentTheme == ThemesManager.Themes.theme1.rawValue
+        switchThemeButton2.isSelected = UIColor.currentTheme == ThemesManager.Themes.theme2.rawValue
+        switchThemeButton3.isSelected = UIColor.currentTheme == ThemesManager.Themes.theme3.rawValue
     }
 
     @IBAction func switchTheme(_ sender: UIButton) {
-        guard let theme = Themes.init(rawValue: sender.tag) else {
+        guard let theme = ThemesManager.Themes.init(rawValue: sender.tag) else {
             return
         }
-        UIColor.switchToTheme(theme.rawValue)
-        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            keyWindow.rootViewController = storyboard?.instantiateInitialViewController()
-            keyWindow.makeKeyAndVisible()
-        }
+        ThemesManager.shared.switchToTheme(theme: theme, storyboard: storyboard)
     }
     
 }

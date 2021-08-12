@@ -12,6 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         UIColor.swizzleInitImplementation(appThemes: ["Theme2","Theme3"])
+        if let theme = UserDefaults.standard.string(forKey: "Theme") {
+            UIColor.switchToTheme(theme)
+        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
