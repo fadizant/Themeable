@@ -72,6 +72,8 @@ extension UIColor {
         let theme = selectedTheme.isEmpty ? "" : "_\(selectedTheme)"
         if let color = UIColor.listOfColors[name+theme] {
             return color
+        }else if let color = UIColor.listOfColors[name] {
+            return color
         }
         fatalError("\(name) is not set. please run swiftgen")
     }
