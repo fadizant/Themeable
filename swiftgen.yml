@@ -1,0 +1,10 @@
+xcassets:
+  inputs:
+    - Themeable/Colors.xcassets
+  outputs:
+    - templatePath: asset-to-color-extension.stencil
+      output: Themeable/Theme/UIColorExtension.swift
+      params:
+        enumName: UIColor
+        publicAccess: true
+        allValues: true
